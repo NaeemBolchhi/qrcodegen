@@ -721,8 +721,8 @@ function setupqr(){
 
     var elem = document.getElementById('qrcanv');
     qrc = elem.getContext('2d');
-    qrc.canvas.width = wd;
-    qrc.canvas.height = ht;
+    // qrc.canvas.width = wd;
+    // qrc.canvas.height = ht;
     qrc.fillStyle = '#eee';
     qrc.fillRect(0,0,wd,ht);
 
