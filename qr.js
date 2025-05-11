@@ -1,5 +1,8 @@
-/* This project is a fork of the following demonstration.
- * https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jsqrencode/qrenc3.html
+/* QR Code Generator
+ * https://github.com/NaeemBolchhi/qrcodegen
+
+ * This project is licensed under GPL-3.0.
+ * https://raw.githubusercontent.com/NaeemBolchhi/qrcodegen/refs/heads/main/LICENSE
  */
 
 // alignment pattern
