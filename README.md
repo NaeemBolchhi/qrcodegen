@@ -39,7 +39,7 @@ The function you should call is `doqr()`. It needs to have several variables pas
     - `ecc`: Can be 1, 2, 3, or 4. 1 is Lowest and 4 is Highest. Should be Integer. Check [here](https://www.han-soft.com/releases/barcode2d/documents/p_ecclevel_qrcode.html) if you want to understand this value.
     - `background`: Background color of the QR. Use a HEX value. Should be String.
     - `foreground`: Foreground color of the QR. Use a HEX value. Should be String.
-    - `container`: Point to a document element that will contain the qr. It will be cleaned every time you create a QR. Should be a JS property.
+    - `container`: Point to a document element that will contain the qr. It will be cleaned every time you create a QR. Should be JS code leading to a valid HTML element.
 
 So, here's an example command with all the values inserted:
 ```
