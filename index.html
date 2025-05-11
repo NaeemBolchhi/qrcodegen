@@ -760,18 +760,20 @@ function doqr() {
                 qrc.fillRect(px*(4+i),px*(4+j),px,px)
 }
 </script>-->
-<script type="text/javascript" src="qr.js"></script>
 </head>
-<body onload="setupqr()">
-<div id="qrdiv" style="background:lightgray; position:absolute; width:360px; height:360px">
+<body>
+<div id="qrdiv" style="background:lightgray; position:absolute; width:100%; height:100%">
     Javascript QR Encoder, Copyright 2010, tz@execpc.com, released under GPLv3
-  <form name="qrinp">
-    <input type="button" value="Go" onclick="doqr()"/>
-    ECC Level (1-4)
-    <input type="numeric" name="ECC" value="1" size="1"><br>
-    Text:<textarea name="qrinput" size=2953>Hello World!</textarea><br>
-  </form>
-    <canvas id="qrcanv" width="812" height="812">No Canvas Support?</canvas>
+    Forked by NaeemBolchhi.
+    <form name="qrinp">
+        <input type="button" value="Go" onclick="doqr(document.querySelector('#string').value, document.querySelector('#eccval').value, '#eee', '#000', document.getElementById('img-container'))" />
+        ECC Level (1-4)
+        <input type="numeric" id="eccval" name="ECC" value="1" size="1"><br>
+        Text:<textarea id="string" name="qrinput" size=2953>Hello World!</textarea><br>
+    </form>
+    <div id="img-container"></div>
+    <!-- <canvas id="qrcanv" width="812" height="812">No Canvas Support?</canvas> -->
+     <script type="text/javascript" src="qr.js"></script>
 </div>
 </body>
 </html>

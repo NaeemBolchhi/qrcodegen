@@ -707,17 +707,16 @@ function genframe(instring)
 
 var wd, ht, qrc;
 function setupqr(){
-//    window.scrollTo(0,1)
-    wd = window.innerWidth-10;
-    ht = window.innerHeight-10;
-    mp = document.getElementById("mapcanv");
+   window.scrollTo(0,1)
+    // wd = window.innerWidth-10;
+    // ht = window.innerHeight-10;
+    wd = 800;
+    ht = 800;
 
-    qrd = document.getElementById("qrdiv");
-    qrd.style.width = wd + "px";
-    qrd.style.height = ht + "px";
+    // wd -= 4;
+    // ht -= 80;
 
-    wd -= 4;
-    ht -= 80;
+    createCanvas();
 
     var elem = document.getElementById('qrcanv');
     qrc = elem.getContext('2d');
@@ -725,27 +724,49 @@ function setupqr(){
     // qrc.canvas.height = ht;
     qrc.fillStyle = '#eee';
     qrc.fillRect(0,0,wd,ht);
-
 }
 
-function doqr() {
+function createCanvas() {
+    try {document.getElementById('qrcanv').remove();} catch {}
+
+    let canvas = document.createElement('canvas');
+    canvas.id = 'qrcanv';
+    canvas.setAttribute('width', '798');
+    canvas.setAttribute('height', '798');
+    canvas.setAttribute('style','position:fixed;left:-2000px;top:-2000px');
+    canvas.textContent = 'No Canvas Support?';
+    document.body.appendChild(canvas);
+}
+
+function doqr(string, eccval, bg, fg, container) {
+    // createCanvas();
+    setupqr();
     d = document;
-    ecclevel = d.qrinp.ECC.value;
-    qf = genframe(d.qrinp.qrinput.value);
+    ecclevel = eccval;
+    qf = genframe(string);
     qrc.lineWidth=1;
 
-    var i,j;
     px = wd;
-    if( ht < wd )
-        px = ht;
-    px /= width+10;
-    px=Math.round(px - 0.5);
+    if (ht < wd) {px = ht;}
+    px /= width;
+    px=Math.round(px);
     qrc.clearRect(0,0,wd,ht);
-    qrc.fillStyle = '#fff';
-    qrc.fillRect(0,0,px*(width+8),px*(width+8));
-    qrc.fillStyle = '#000';
-    for( i = 0; i < width; i++ )
-        for( j = 0; j < width; j++ )
-            if( qf[j*width+i] )
-                qrc.fillRect(px*(4+i),px*(4+j),px,px)
+    qrc.fillStyle = bg;
+    // qrc.fillRect(0,0,px*(width+8),px*(width+8));
+    qrc.fillRect(0,0,px*width,px*width);
+
+    qrc.fillStyle = fg;
+    for (let i = 0; i < width; i++ ) {
+        for (let j = 0; j < width; j++ ) {
+            if (qf[j*width+i]) {
+                // qrc.fillRect(px*(4+i),px*(4+j),px,px);
+                qrc.fillRect(px*i,px*j,px,px);
+            }
+        }
+    }
+
+    let img = document.createElement('img');
+    img.src = document.getElementById('qrcanv').toDataURL("image/png");
+    container.textContent = '';
+    container.appendChild(img);
 }
