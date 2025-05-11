@@ -32,7 +32,7 @@ Place it at the end of your body tag.
 
 The function you should call is `doqr()`. It needs to have several variables passed to it.
 
-- doqr(string, ecc, background, foreground, container)
+- `doqr(string, ecc, background, foreground, container)`
     - `string`: What you want to encode. Should be String.
     - `ecc`: Can be 1, 2, 3, or 4. 1 is Lowest and 4 is Highest. Should be Integer. Check [here](https://www.han-soft.com/releases/barcode2d/documents/p_ecclevel_qrcode.html) if you want to understand this value.
     - `background`: Background color of the QR. Use a HEX value. Should be String.
