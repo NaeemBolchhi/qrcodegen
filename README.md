@@ -3,8 +3,10 @@ A JavaScript based qr code generator.
 
 # Fork Disclaimer
 This project is a fork of Javascript QR Encoder. It was also released under GPLv3.
-
 Original author's email: tz@execpc.com
+
+It also uses the Trim Canvas function by Remy, which is MIT.
+Taken from [Our Code World](https://ourcodeworld.com/articles/read/683/how-to-remove-the-transparent-pixels-that-surrounds-a-canvas-in-javascript).
 
 # Process
 

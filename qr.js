@@ -713,8 +713,8 @@ function setupqr(){
    window.scrollTo(0,1)
     // wd = window.innerWidth-10;
     // ht = window.innerHeight-10;
-    wd = 800;
-    ht = 800;
+    wd = 1000;
+    ht = 1000;
 
     // wd -= 4;
     // ht -= 80;
@@ -734,8 +734,8 @@ function createCanvas() {
 
     let canvas = document.createElement('canvas');
     canvas.id = 'qrcanv';
-    canvas.setAttribute('width', '798');
-    canvas.setAttribute('height', '798');
+    canvas.setAttribute('width', '2000');
+    canvas.setAttribute('height', '2000');
     canvas.setAttribute('style','position:fixed;left:-2000px;top:-2000px');
     canvas.textContent = 'No Canvas Support?';
     document.body.appendChild(canvas);
@@ -769,7 +769,71 @@ function doqr(string, eccval, bg, fg, container) {
     }
 
     let img = document.createElement('img');
-    img.src = document.getElementById('qrcanv').toDataURL("image/png");
+    img.src = trimCanvas(document.getElementById('qrcanv')).toDataURL("image/png");
     container.textContent = '';
     container.appendChild(img);
+}
+
+/* The Trim Canvas function is MIT.
+ * http://rem.mit-license.org
+ 
+ * Taken from Our Code World.
+ * https://ourcodeworld.com/articles/read/683/how-to-remove-the-transparent-pixels-that-surrounds-a-canvas-in-javascript
+ */
+function trimCanvas(c) {
+    var ctx = c.getContext('2d'),
+        copy = document.createElement('canvas').getContext('2d'),
+        pixels = ctx.getImageData(0, 0, c.width, c.height),
+        l = pixels.data.length,
+        i,
+        bound = {
+            top: null,
+            left: null,
+            right: null,
+            bottom: null
+        },
+        x, y;
+    
+    // Iterate over every pixel to find the highest
+    // and where it ends on every axis ()
+    for (i = 0; i < l; i += 4) {
+        if (pixels.data[i + 3] !== 0) {
+            x = (i / 4) % c.width;
+            y = ~~((i / 4) / c.width);
+
+            if (bound.top === null) {
+                bound.top = y;
+            }
+
+            if (bound.left === null) {
+                bound.left = x;
+            } else if (x < bound.left) {
+                bound.left = x;
+            }
+
+            if (bound.right === null) {
+                bound.right = x;
+            } else if (bound.right < x) {
+                bound.right = x;
+            }
+
+            if (bound.bottom === null) {
+                bound.bottom = y;
+            } else if (bound.bottom < y) {
+                bound.bottom = y;
+            }
+        }
+    }
+    
+    // Calculate the height and width of the content
+    var trimHeight = bound.bottom - bound.top,
+        trimWidth = bound.right - bound.left,
+        trimmed = ctx.getImageData(bound.left, bound.top, trimWidth, trimHeight);
+
+    copy.canvas.width = trimWidth;
+    copy.canvas.height = trimHeight;
+    copy.putImageData(trimmed, 0, 0);
+
+    // Return trimmed canvas
+    return copy.canvas;
 }
