@@ -17,13 +17,13 @@ This fork generates the QR in a hidden canvas and converts it into a PNG file vi
 Download the JS file and add it to your website or use the URL below.
 
 ```
-https://cdn.jsdelivr.net/gh/NaeemBolchhi/qrcodegen@main/qr.min.js
+https://naeembolchhi.github.io/qrcodegen/qr.min.js
 ```
 
 Or, you can try a script tag with this URL.
 
 ```
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/NaeemBolchhi/qrcodegen@main/qr.min.js"></script>
+<script type="text/javascript" src="https://naeembolchhi.github.io/qrcodegen/qr.min.js"></script>
 ```
 
 Place it at the end of your body tag.
