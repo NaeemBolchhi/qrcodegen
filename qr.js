@@ -1,4 +1,4 @@
-/* Uploaded without change from
+/* This project is a fork of the following demonstration.
  * https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jsqrencode/qrenc3.html
  */
 
