@@ -44,5 +44,9 @@ So, here's an example command with all the values inserted:
 doqr("Example string", 1, "#eee", "#000", document.body);
 ```
 
+## Test
+
+You can try the code live (here)[https://naeembolchhi.github.io/qrcodegen/test.html].
+
 # License
 This project is licensed under GPL v3.0.
