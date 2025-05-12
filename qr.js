@@ -709,7 +709,7 @@ function genframe(instring)
 }
 
 var wd, ht, qrc;
-function setupqr(){
+function setupqr(container) {
    window.scrollTo(0,1)
     // wd = window.innerWidth-10;
     // ht = window.innerHeight-10;
@@ -719,7 +719,7 @@ function setupqr(){
     // wd -= 4;
     // ht -= 80;
 
-    createCanvas();
+    createCanvas(container);
 
     var elem = document.getElementById('qrcanv');
     qrc = elem.getContext('2d');
@@ -729,7 +729,7 @@ function setupqr(){
     qrc.fillRect(0,0,wd,ht);
 }
 
-function createCanvas() {
+function createCanvas(container) {
     try {document.getElementById('qrcanv').remove();} catch {}
 
     let canvas = document.createElement('canvas');
@@ -738,12 +738,12 @@ function createCanvas() {
     canvas.setAttribute('height', '2000');
     canvas.setAttribute('style','position:fixed;left:-2000px;top:-2000px');
     canvas.textContent = 'No Canvas Support?';
-    document.body.appendChild(canvas);
+    container.appendChild(canvas);
 }
 
 function doqr(string, eccval, bg, fg, container) {
     // createCanvas();
-    setupqr();
+    setupqr(container);
     d = document;
     ecclevel = eccval;
     qf = genframe(string);
