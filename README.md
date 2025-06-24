@@ -51,4 +51,4 @@ doqr("Example string", 1, "#eee", "#000", document.body);
 You can try the code live [here](https://naeembolchhi.github.io/qrcodegen/test.html).
 
 # License
-This project is licensed under GPL v3.0.
+This project is licensed under AGPL v3.0.
